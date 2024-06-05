@@ -9,6 +9,7 @@ const compat = new FlatCompat({
 
 module.exports = [
   { plugins: { '@nx': nxEslintPlugin } },
+  ...compat.extends('./eslint'),
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     rules: {

@@ -1,7 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/cypress/**/*",
@@ -60,6 +63,12 @@
       "library": {
         "unitTestRunner": "none"
       }
+    }
+  },
+  "release": {
+    "projectsRelationship": "independent",
+    "version": {
+      "preVersionCommand": "yarn dlx nx run-many -t build"
     }
   },
   "nxCloudAccessToken": "NTFiYWZjYWQtZjQ0MS00Nzg5LTg5ZTctODAxZjY0N2I1M2YxfHJlYWQtd3JpdGU="

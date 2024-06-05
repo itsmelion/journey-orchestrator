@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@journey-orchestrator/components": ["components/src/index.ts"],
-      "@journey-orchestrator/services": ["services/src/index.ts"]
+      "@journey-orchestrator/services": ["services/src/index.ts"],
+      "@journey-orchestrator/eslint-config": ["eslint/index.js"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,30 @@
+{
+  "name": "eslint-config-starlogik",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/eslint",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/eslint",
+        "main": "libs/eslint/index.js",
+        "tsConfig": "libs/eslint/tsconfig.lib.json",
+        "assets": ["libs/eslint/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs eslint-config {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/eslint/**/*.js"]
+      }
+    }
+  }
+}
