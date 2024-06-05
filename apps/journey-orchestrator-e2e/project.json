@@ -1,0 +1,9 @@
+{
+  "name": "journey-orchestrator-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/journey-orchestrator-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["journey-orchestrator"],
+  "// targets": "to see all targets run: nx show project journey-orchestrator-e2e --web",
+  "targets": {}
+}
