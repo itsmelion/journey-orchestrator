@@ -10,13 +10,13 @@ const nextConfig = {
   nx: {
     // Set this to true if you would like to to use SVGR
     // See: https://github.com/gregberge/svgr
-    svgr: false,
+    svgr: true,
   },
 
-  compiler: {
-    // For other options, see https://nextjs.org/docs/architecture/nextjs-compiler#emotion
-    emotion: true,
-  },
+  // compiler: {
+  //   // For other options, see https://nextjs.org/docs/architecture/nextjs-compiler#emotion
+  //   emotion: true,
+  // },
 };
 
 const plugins = [
