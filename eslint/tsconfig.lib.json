@@ -3,7 +3,12 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "declaration": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
-  "include": ["/**/*.ts", "/**/*.js"],
+  "include": [
+    "/**/*.ts",
+    "/**/*.js"
+  ],
 }
