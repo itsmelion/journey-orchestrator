@@ -2,7 +2,6 @@
   "name": "@journey-orchestrator/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
   "private": true,
   "dependencies": {
     "@emotion/react": "11.11.1",
@@ -14,6 +13,9 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^2.1.1",
+    "@eslint/js": "~8.57.0",
+    "@netlify/plugin-nextjs": "^5.3.2",
     "@nx/cypress": "19.2.0",
     "@nx/eslint": "19.2.0",
     "@nx/eslint-plugin": "19.2.0",
@@ -21,6 +23,7 @@
     "@nx/js": "19.2.0",
     "@nx/next": "19.2.0",
     "@nx/workspace": "19.2.0",
+    "@svgr/webpack": "^8.1.0",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
@@ -49,5 +52,5 @@
     "ts-node": "10.9.1",
     "typescript": "~5.4.2"
   },
-  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  "packageManager": "yarn@4.2.2"
 }
