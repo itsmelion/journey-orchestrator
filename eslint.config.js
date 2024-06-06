@@ -28,18 +28,4 @@ module.exports = [
       ],
     },
   },
-  ...compat.config({ extends: ['plugin:@nx/typescript'] }).map((config) => ({
-    ...config,
-    files: ['**/*.ts', '**/*.tsx'],
-    rules: {
-      ...config.rules,
-    },
-  })),
-  ...compat.config({ extends: ['plugin:@nx/javascript'] }).map((config) => ({
-    ...config,
-    files: ['**/*.js', '**/*.jsx'],
-    rules: {
-      ...config.rules,
-    },
-  })),
 ];

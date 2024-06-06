@@ -1,11 +1,10 @@
 'use client';
-import { CSSProperties } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import isPropValid from '@emotion/is-prop-valid';
 
 import { StackProps } from './stack';
-import { mq } from '../utilities';
+import { resolveResponsive } from '../utilities';
 
 const forbiddenProps = [
   'direction',
@@ -35,28 +34,12 @@ export const StackStyled = styled(Flex, { shouldForwardProp: shouldAllow })<Stac
   justify = 'stretch',
   gap = 0,
   display = 'flex',
-}) => ({
-  display: 'flex',
-  flex: 1,
-  ...css({
-    ...resolveResponsive('display', display),
-    ...resolveResponsive('gap', gap),
-    ...resolveResponsive('flexDirection', direction),
-    ...resolveResponsive('alignItems', align),
-    ...resolveResponsive('justifyContent', justify),
-  }),
+  flex = 1,
+}) => css({
+  ...resolveResponsive('display', display),
+  ...resolveResponsive('flex', flex),
+  ...resolveResponsive('gap', gap),
+  ...resolveResponsive('flexDirection', direction),
+  ...resolveResponsive('alignItems', align),
+  ...resolveResponsive('justifyContent', justify),
 })).withComponent('div');
-
-function resolveResponsive(
-  property: keyof CSSProperties,
-  param: CSSProperties[typeof property] | Array<CSSProperties[typeof property]>,
-) {
-  if (!Array.isArray(param)) return { [property]: param };
-
-  return {
-    [property]: param[1],
-    [mq.mobile]: {
-      [property]: param[0],
-    },
-  };
-}

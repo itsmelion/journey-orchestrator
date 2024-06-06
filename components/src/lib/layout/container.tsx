@@ -1,3 +1,4 @@
+'use client';
 import emotionStyled from '@emotion/styled';
 
 export const Container = emotionStyled.div({
@@ -6,4 +7,6 @@ export const Container = emotionStyled.div({
   display: 'flex',
   flex: 1,
   flexDirection: 'column',
+  paddingLeft: '1rem',
+  paddingRight: '1rem',
 });

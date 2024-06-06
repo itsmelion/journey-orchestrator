@@ -25,6 +25,7 @@ module.exports = {
     'plugin:@stylistic/disable-legacy',
     'plugin:@stylistic/recommended-extends',
     'plugin:react-hooks/recommended',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
 
   globals: {

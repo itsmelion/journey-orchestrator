@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+'use client';
+import { forwardRef } from 'react';
 
 import { StackStyled } from './flex';
-
-type ResponsiveProp<P extends keyof React.CSSProperties> = React.CSSProperties[P] | Array<React.CSSProperties[P]>;
+import { ResponsiveProp } from '../utilities';
 
 export interface StackProps extends React.PropsWithChildren {
   direction?: ResponsiveProp<'flexDirection'>;
@@ -10,6 +10,7 @@ export interface StackProps extends React.PropsWithChildren {
   align?: ResponsiveProp<'alignItems'>;
   gap?: ResponsiveProp<'gap'>;
   display?: ResponsiveProp<'display'>;
+  flex?: ResponsiveProp<'flex'>;
 }
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {

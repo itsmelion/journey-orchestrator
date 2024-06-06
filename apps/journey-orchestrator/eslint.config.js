@@ -10,7 +10,6 @@ const compat = new FlatCompat({
 module.exports = [
   ...baseConfig,
   ...compat.extends(
-    'plugin:@nx/react-typescript',
     'next',
     'next/core-web-vitals'
   ),

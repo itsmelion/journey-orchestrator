@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="100 0 2000 825">
+  <defs>
+    <clipPath id="c">
+      <rect x="150" y="26" width="1920" height="799" fill="none" stroke-width="0"/>
+    </clipPath>
+    <filter id="e" data-name="outer-glow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="f" stdDeviation="139"/>
+      <feFlood flood-color="#00edff" flood-opacity=".7"/>
+      <feComposite in2="f" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="b" data-name="earth-art">
+    <g clip-path="url(#c)">
+      <g id="d" data-name="earth">
+        <path d="M1832,1009c-2.46-789.21-1412.68-789.13-1415,.04,2.46,789.17,1412.68,789.08,1415-.04Z" fill="#0b1428" filter="url(#e)" stroke-width="0"/>
+        <path d="M705.03,523.88l-32.65,43.91-26.79,23.11-33.7,49.89,22.3,50.78,51.48,75.78,110.33,21.73,30.87-54.99,32.62-17.91,22.65,10.77c-2.26,20.82,1.14,73.78,2.8,95.15l191.14,58.47s17.25-66.46,17.35-69.46-5.08-102.22-5.08-102.22l-29.4-92.05s-104.85-65.57-116.81-66.97.92-57,.92-57c46.46,10.75,21.33,7.12,43.69,39.49l33.96-27.87-6.09-27.22s1.57-16.96,1.64-18.96,37.48-13.75,37.48-13.75l20.85,4.7,12.84-24.58-.25-6.81s-181.03-8.27-382.15,106.01Z" fill="#0e1d23" stroke-width="0"/>
+        <path d="M1500,664l-77-38-78,56-14,58s40,24,49,32,121,16,135,20,116-27,116-27c-18.25-30.93-60.2-95.72-84-122l-47,21Z" fill="#0e1d23" stroke-width="0"/>
+        <path d="M1476,489c6.9,28.62-14.64,50.98-27,66l46,29h18.16l-23.16-38-1-18c.54-8.43,2.73-26.04,5.27-34.04l-18.27-4.96Z" fill="#0e1d23" stroke-width="0"/>
+      </g>
+    </g>
+  </g>
+</svg>

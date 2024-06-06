@@ -1,4 +1,5 @@
 import './global.css';
+import { ServicesProvider } from '@journey-orchestrator/services';
 
 export const metadata = {
   title: 'Welcome to journey-orchestrator',
@@ -6,13 +7,20 @@ export const metadata = {
 };
 
 export default function RootLayout({
+  wizard,
   children,
 }: {
+  wizard: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ServicesProvider>
+          {children}
+          {wizard}
+        </ServicesProvider>
+      </body>
     </html>
   );
 }

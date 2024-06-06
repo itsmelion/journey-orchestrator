@@ -43,6 +43,12 @@ body {
   flex-direction: column;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #0B0E16;
+  background-image: url('/earth.svg');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #FAFAFA;
 }
 
 /* Set shorter line heights on headings and interactive elements */
