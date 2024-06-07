@@ -1,4 +1,5 @@
+import ExpeditionEditor from './expedition';
 
 export default function Page() {
-  return <h1>Expedition Page</h1>
+  return <ExpeditionEditor/>
 }

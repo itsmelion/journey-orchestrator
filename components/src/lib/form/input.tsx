@@ -1,7 +1,18 @@
+'use client';
+import { forwardRef } from 'react';
+
 import { BaseInput } from './form.styled';
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+}
 
-export const Input = (props: InputProps) => {
-  return <BaseInput { ...props } />;
-};
+export const Input = forwardRef<HTMLInputElement, InputProps>(function InputComponent(props, ref) {
+
+  return (
+    <BaseInput
+      { ...props }
+      ref={ ref }
+    />
+  );
+});
