@@ -1,5 +1,4 @@
 import './global.css';
-import { ModalWrapper } from '@journey-orchestrator/components';
 import { ServicesProvider } from '@journey-orchestrator/services';
 
 export const metadata = {

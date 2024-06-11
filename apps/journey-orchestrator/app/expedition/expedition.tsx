@@ -1,6 +1,6 @@
 import { Header, Button, Container, Stack } from '@journey-orchestrator/components';
 import Link from 'next/link';
-import { ExpeditionForm } from './expedition-form';
+import { ExpeditionForm } from './expedition-form/expedition-form';
 
 export default function ExpeditionEditor() {
   return (

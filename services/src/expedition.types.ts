@@ -26,7 +26,7 @@ type Engineer = {
 };
 
 type Passenger = {
-  type: MemberTypes;
+  type: MemberTypes.passenger;
   wealth: number;
   age: number;
 };

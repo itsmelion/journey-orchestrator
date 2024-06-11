@@ -6,7 +6,9 @@ type LabelProps = React.PropsWithChildren & {
 };
 
 export function Label({ children, label, name, ...props }: LabelProps) {
-  if (!label || !children) return null;
+  if (!label) return null;
 
-  return <label { ...props } htmlFor={ name }>{label || children}</label>;
+  return (
+    <label { ...props } htmlFor={ name }>{label || children}</label>
+  );
 }

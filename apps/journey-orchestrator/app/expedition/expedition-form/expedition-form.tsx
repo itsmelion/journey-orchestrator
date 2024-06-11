@@ -1,26 +1,25 @@
 'use client';
 
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider, useFieldArray } from 'react-hook-form';
 import { Button, Field } from '@journey-orchestrator/components';
-import { Expedition } from '@journey-orchestrator/services';
-import * as z from 'zod';
+import { MemberTypes, Expedition, dayjs } from '@journey-orchestrator/services';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 
-const schema = z.object({
-  name: z.string().min(1, { message: 'Mission needs thrilling name' }),
-  destination: z.string().min(1, { message: 'Must define here are you landing' }),
-  departure: z.date().min(new Date(), { message: "Can't time travel back time yet, date must be in the future" })
-});
+import { schema } from './form-schema';
 
 export const ExpeditionForm = () => {
   const form = useForm<Expedition>({
     resolver: zodResolver(schema),
   });
-
+  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
+    control: form.control,
+    name: "members",
+  });
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(() => {})}>
+      <form onSubmit={form.handleSubmit((d) => console.log(d))}>
         <Field
           label='Expedition name'
           placeholder='Expedition 69'
@@ -36,9 +35,24 @@ export const ExpeditionForm = () => {
         <Field
           label='Departure'
           type='date'
-          min={'2024-06-07'}
+          min={dayjs.utc().format('YYYY-MM-DD')}
+          max={dayjs.utc('2025-01-01', 'YYYY-MM-DD').format('YYYY-MM-DD')}
           {...form.register('departure')}
         />
+
+        <h3>Members</h3>
+
+        {fields.map((field) => (
+          <p key={field.id}>hey {field.id}</p>
+        ))}
+
+        <Button
+          onClick={() => append({
+            type: MemberTypes.pilot,
+            experience: 10
+          })}>
+          add member
+        </Button>
 
         <Button type='submit'>
           Create Expedition
