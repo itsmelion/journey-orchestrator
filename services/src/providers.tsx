@@ -1,10 +1,8 @@
 'use client';
-import { QueryClient } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental';
 import { ErrorBoundary } from 'react-error-boundary';
-import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
-import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 
 function makeQueryClient() {
   const client = new QueryClient({
@@ -18,10 +16,6 @@ function makeQueryClient() {
 
   return client;
 }
-
-const persister = createSyncStoragePersister({
-  storage: typeof window === 'undefined' ? undefined : window.localStorage,
-});
 
 let browserQueryClient: QueryClient | undefined = undefined;
 
@@ -45,15 +39,14 @@ export const ServicesProvider = ({ children }: React.PropsWithChildren) => {
 
   return (
     <ErrorBoundary fallback={ <div>Error</div> }>
-      <PersistQueryClientProvider
-        persistOptions={{ persister }}
+      <QueryClientProvider
         client={ queryClient }
       >
         <ReactQueryStreamedHydration>
           {children}
         </ReactQueryStreamedHydration>
         <ReactQueryDevtools initialIsOpen={ false } />
-      </PersistQueryClientProvider>
+      </QueryClientProvider>
     </ErrorBoundary>
   );
 };
