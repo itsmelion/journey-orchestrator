@@ -11,7 +11,7 @@ const mock: Expedition[] = [
     members: [],
   },
   {
-    id:'2',
+    id: '2',
     name: 'Exp 2',
     departure: d,
     destination: 'Mars',

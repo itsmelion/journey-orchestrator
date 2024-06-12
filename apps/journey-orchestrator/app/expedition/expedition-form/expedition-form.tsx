@@ -4,14 +4,17 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, FormProvider, useFieldArray } from 'react-hook-form';
 
 import { Button, Field, Message, Stack } from '@journey-orchestrator/components';
-import { MemberTypes, Expedition, dayjs, Jobs } from '@journey-orchestrator/services';
+import { MemberTypes, Expedition, dayjs, Jobs, useAddExpedition } from '@journey-orchestrator/services';
 
 import { schema } from './form-schema';
 import { PilotCard } from './components/PilotCard/PilotCard';
 import { EngineerCard } from './components/EngineerCard/EngineerCard';
 import { PassengerCard } from './components/PassengerCard/PassengerCard';
+import { useRouter } from 'next/navigation';
 
 export const ExpeditionForm = () => {
+  const { mutate } = useAddExpedition();
+  const router = useRouter();
   const form = useForm<Expedition>({
     resolver: zodResolver(schema),
     defaultValues: { members: [{
@@ -27,7 +30,10 @@ export const ExpeditionForm = () => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit((d) => console.log(d))}>
+      <form onSubmit={form.handleSubmit(d => {
+        mutate(d);
+        router.back();
+      })}>
         <Stack gap={'1rem'}>
         <Field
           label='Expedition name'

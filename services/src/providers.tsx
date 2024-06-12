@@ -1,23 +1,27 @@
 'use client';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental';
 import { ErrorBoundary } from 'react-error-boundary';
-import expeditionsMock from './expedition.mock';
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 
 function makeQueryClient() {
   const client = new QueryClient({
     defaultOptions: {
       queries: {
         staleTime: 60 * 1000,
+        gcTime: 1000 * 60 * 60 * 1, // 1 hour
       },
     },
   });
 
-  client.setQueryData(['expeditions'], expeditionsMock);
-
   return client;
 }
+
+const persister = createSyncStoragePersister({
+  storage: typeof window === 'undefined' ? undefined : window.localStorage,
+});
 
 let browserQueryClient: QueryClient | undefined = undefined;
 
@@ -41,12 +45,15 @@ export const ServicesProvider = ({ children }: React.PropsWithChildren) => {
 
   return (
     <ErrorBoundary fallback={ <div>Error</div> }>
-      <QueryClientProvider client={ queryClient }>
+      <PersistQueryClientProvider
+        persistOptions={{ persister }}
+        client={ queryClient }
+      >
         <ReactQueryStreamedHydration>
           {children}
         </ReactQueryStreamedHydration>
         <ReactQueryDevtools initialIsOpen={ false } />
-      </QueryClientProvider>
+      </PersistQueryClientProvider>
     </ErrorBoundary>
   );
 };
