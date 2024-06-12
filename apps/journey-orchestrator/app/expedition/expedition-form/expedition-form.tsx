@@ -1,18 +1,26 @@
 'use client';
 
-import { useForm, FormProvider, useFieldArray } from 'react-hook-form';
-import { Button, Field } from '@journey-orchestrator/components';
-import { MemberTypes, Expedition, dayjs } from '@journey-orchestrator/services';
-
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm, FormProvider, useFieldArray } from 'react-hook-form';
+
+import { Button, Field, Message, Stack } from '@journey-orchestrator/components';
+import { MemberTypes, Expedition, dayjs, Jobs } from '@journey-orchestrator/services';
 
 import { schema } from './form-schema';
+import { PilotCard } from './components/PilotCard/PilotCard';
+import { EngineerCard } from './components/EngineerCard/EngineerCard';
+import { PassengerCard } from './components/PassengerCard/PassengerCard';
 
 export const ExpeditionForm = () => {
   const form = useForm<Expedition>({
     resolver: zodResolver(schema),
+    defaultValues: { members: [{
+      type: MemberTypes.pilot,
+      experience: 10,
+    }]}
   });
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
+
+  const { fields, append, remove } = useFieldArray({
     control: form.control,
     name: "members",
   });
@@ -20,6 +28,7 @@ export const ExpeditionForm = () => {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit((d) => console.log(d))}>
+        <Stack gap={'1rem'}>
         <Field
           label='Expedition name'
           placeholder='Expedition 69'
@@ -42,21 +51,45 @@ export const ExpeditionForm = () => {
 
         <h3>Members</h3>
 
-        {fields.map((field) => (
-          <p key={field.id}>hey {field.id}</p>
-        ))}
+        <Stack gap={'1rem'} direction={'row'} wrap={'wrap'}>
+          {fields.map((field, idx) => (
+            <div key={field.id}>
+              {field.type === MemberTypes.pilot && <PilotCard idx={idx} />}
+              {field.type === MemberTypes.passenger && <PassengerCard removeFn={remove} idx={idx} />}
+              {field.type === MemberTypes.engineer && <EngineerCard removeFn={remove} idx={idx} />}
+            </div>
+          ))}
+        </Stack>
+
+        <Message name='members.root' errors={form.formState.errors} />
+
+
+        <Stack direction={'row'} gap={'1rem'}>
+        <Button
+          type='button'
+          onClick={() => append({
+            type: MemberTypes.passenger,
+            wealth: 0,
+            age: 0,
+          })}>
+          Add passenger
+        </Button>
 
         <Button
+          type='button'
           onClick={() => append({
-            type: MemberTypes.pilot,
-            experience: 10
+            type: MemberTypes.engineer,
+            experience: 0,
+            job: Jobs.mechanics,
           })}>
-          add member
+          Add engineer
         </Button>
+        </Stack>
 
         <Button type='submit'>
           Create Expedition
         </Button>
+        </Stack>
       </form>
     </FormProvider>
   );

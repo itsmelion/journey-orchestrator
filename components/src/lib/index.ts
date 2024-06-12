@@ -9,6 +9,8 @@ export * from './buttons/IconButton/IconButton.styled';
 export * from './cards/Card';
 export * from './form/field';
 export * from './form/input';
+export * from './form/message';
+export * from './form/label';
 
 // Molecules
 export * from './Header/Header';

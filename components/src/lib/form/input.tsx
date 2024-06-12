@@ -12,6 +12,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function InputComp
   return (
     <BaseInput
       { ...props }
+      id={props.id || props.name}
       ref={ ref }
     />
   );

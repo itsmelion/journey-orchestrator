@@ -24,7 +24,7 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(pro
         name={ name }
         { ...inputProps }
       />
-      <Message name={ name } errors={errors} />
+      <Message name={ name } errors={ errors } />
     </fieldset>
   );
 });

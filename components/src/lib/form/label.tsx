@@ -1,5 +1,3 @@
-import React from 'react';
-
 type LabelProps = React.PropsWithChildren & {
   label?: string;
   name: string;

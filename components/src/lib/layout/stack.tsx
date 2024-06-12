@@ -11,6 +11,7 @@ export interface StackProps extends React.PropsWithChildren {
   gap?: ResponsiveProp<'gap'>;
   display?: ResponsiveProp<'display'>;
   flex?: ResponsiveProp<'flex'>;
+  wrap?: ResponsiveProp<'flexWrap'>;
 }
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {

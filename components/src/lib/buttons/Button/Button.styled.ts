@@ -1,5 +1,6 @@
 'use client';
 import styled from '@emotion/styled';
+
 import { BaseButton } from '../common.styled';
 
 export const Button = styled(BaseButton)({

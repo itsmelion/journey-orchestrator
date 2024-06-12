@@ -11,6 +11,7 @@ const forbiddenProps = [
   'align',
   'justify',
   'gap',
+  'wrap',
 ];
 
 function shouldAllow(prop: string) {
@@ -35,6 +36,7 @@ export const StackStyled = styled(Flex, { shouldForwardProp: shouldAllow })<Stac
   gap = 0,
   display = 'flex',
   flex = 1,
+  wrap = 'nowrap',
 }) => css({
   ...resolveResponsive('display', display),
   ...resolveResponsive('flex', flex),
@@ -42,4 +44,5 @@ export const StackStyled = styled(Flex, { shouldForwardProp: shouldAllow })<Stac
   ...resolveResponsive('flexDirection', direction),
   ...resolveResponsive('alignItems', align),
   ...resolveResponsive('justifyContent', justify),
+  ...resolveResponsive('flexWrap', wrap),
 })).withComponent('div');

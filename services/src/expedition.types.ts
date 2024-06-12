@@ -9,23 +9,23 @@ export type Expedition = {
 export type Members = Pilot | Engineer | Passenger;
 
 export enum MemberTypes {
-  pilot = 'Pilor',
+  pilot = 'Pilot',
   engineer = 'Engineer',
   passenger = 'Passenger',
 }
 
-type Pilot = {
+export type Pilot = {
   type: MemberTypes.pilot;
   experience: number;
 };
 
-type Engineer = {
+export type Engineer = {
   type: MemberTypes.engineer;
   experience: number;
   job: Jobs;
 };
 
-type Passenger = {
+export type Passenger = {
   type: MemberTypes.passenger;
   wealth: number;
   age: number;
