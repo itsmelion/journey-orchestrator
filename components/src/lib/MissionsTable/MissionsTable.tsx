@@ -18,7 +18,7 @@ export const MissionsTable = () => {
         <thead>
           <tr>
             <th scope="col">
-              <Input type="search" placeholder="search mission" />
+              <Input name="search_mission" type="search" placeholder="search mission" />
             </th>
 
             <th scope="col">
